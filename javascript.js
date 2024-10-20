@@ -1,9 +1,9 @@
 // javascript.js
 
-let totalMinutes = 121; // 120 minutes
+let totalMinutes = 181; // 120 minutes
 let timeLeft = totalMinutes * 60; // Convert minutes to seconds
 let timerId;
-let timerKey = 'timeLeft_120'; // Unique key for the 120-min timer
+let timerKey = 'timeLeft_180'; // Unique key for the 120-min timer
 
 // Check if there is a saved time in localStorage
 if (localStorage.getItem(timerKey)) {

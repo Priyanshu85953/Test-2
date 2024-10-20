@@ -6,9 +6,9 @@ let timerId;
 let timerKey = 'timeLeft_180'; // Unique key for the 120-min timer
 
 // Check if there is a saved time in localStorage
-if (localStorage.getItem(timerKey)) {
-    timeLeft = parseInt(localStorage.getItem(timerKey), 10);
-}
+// if (localStorage.getItem(timerKey)) {
+//     timeLeft = parseInt(localStorage.getItem(timerKey), 10);
+// }
 
 // Function to start the timer
 function startTimer() {

@@ -1,13 +1,14 @@
 // javascript.js
 
-let totalMinutes = 120; // 180 minutes
+let totalMinutes = 121; // 120 minutes
 let timeLeft = totalMinutes * 60; // Convert minutes to seconds
 let timerId;
+let timerKey = 'timeLeft_120'; // Unique key for the 120-min timer
 
 // Check if there is a saved time in localStorage
-if (localStorage.getItem('timeLeft')) {
-    timeLeft = parseInt(localStorage.getItem('timeLeft'), 10);
-} // basically this code is responsible for not changing time
+if (localStorage.getItem(timerKey)) {
+    timeLeft = parseInt(localStorage.getItem(timerKey), 10);
+}
 
 // Function to start the timer
 function startTimer() {
@@ -18,12 +19,13 @@ function startTimer() {
         // Display the timer
         document.getElementById('time_left').innerHTML = `Time Left: ${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
 
-          // Save the time left in localStorage every second
-          localStorage.setItem('timeLeft', timeLeft);
+        // Save the time left in localStorage every second
+        localStorage.setItem(timerKey, timeLeft);
+
         if (timeLeft <= 0) {
             clearInterval(timerId);
             autoSubmit();
-            localStorage.removeItem('timeLeft'); // Clear storage after submission
+            localStorage.removeItem(timerKey); // Clear storage after submission
         }
 
         timeLeft--;
@@ -33,8 +35,7 @@ function startTimer() {
 // Function to stop the timer and submit
 function stopTimer() {
     clearInterval(timerId);
-    localStorage.removeItem('timeLeft'); // Remove time when the test is submitted
-
+    localStorage.removeItem(timerKey); // Remove time when the test is submitted
 }
 
 // Function to handle auto submission
@@ -50,6 +51,7 @@ window.onload = startTimer;
 document.getElementById('submit').onclick = function() {
     stopTimer();
 };
+
 
 // Login handler (assuming there's a login form)
 function handleLogin(event) {
